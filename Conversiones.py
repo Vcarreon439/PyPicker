@@ -1,9 +1,8 @@
-import math
+def rgb_to_hex(r, g, b):
+    return "#%02x%02x%02x" % (r, g, b)
 
-def rgb_to_hex(r,g,b):
-    return ("#%02x%02x%02x" % (r, g, b))
 
-def rgb_to_cmyk(r,g,b):
+def rgb_to_cmyk(r, g, b):
     if (r, g, b) == (0, 0, 0):
         # black
         return f'(0, 0, 0, 100)'
@@ -22,6 +21,7 @@ def rgb_to_cmyk(r,g,b):
 
         # rescale to the range [0,CMYK_SCALE]
         return f'({format(c * 100,".2f")}, {format(m * 100,".2f")}, {format(y * 100,".2f")}, {format(k * 100,".2f")})'
+
 
 def rgb_to_hsv(r, g, b):
     r, g, b = r/255.0, g/255.0, b/255.0
@@ -43,18 +43,19 @@ def rgb_to_hsv(r, g, b):
     v = mx*100
     return f'({format(h,".2f")}, {format(s,".2f")}, {format(v,".2f")})'
 
+
 def rgb_to_hls(r, g, b):
-    r/=255
-    g/=255
-    b/=255
+    r /= 255
+    g /= 255
+    b /= 255
 
     maxc = max(r, g, b)
     minc = min(r, g, b)
     # XXX Can optimize (maxc+minc) and (maxc-minc)
-    l = (minc+maxc)/2.0
+    l_code = (minc+maxc)/2.0
     if minc == maxc:
-        return 0.0, l, 0.0
-    if l <= 0.5:
+        return 0.0, l_code, 0.0
+    if l_code <= 0.5:
         s = (maxc-minc) / (maxc+minc)
     else:
         s = (maxc-minc) / (2.0-maxc-minc)
@@ -68,4 +69,4 @@ def rgb_to_hls(r, g, b):
     else:
         h = 4.0+gc-rc
     h = (h/6.0) % 1.0
-    return f'({round(360*h, 1)}, {format(s*100, "0.2f")}%, {format(l*100, "0.2f")}%)'
+    return f'({round(360*h, 1)}, {format(s*100, "0.2f")}%, {format(l_code*100, "0.2f")}%)'
