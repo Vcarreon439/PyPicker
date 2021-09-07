@@ -20,8 +20,7 @@ def slide(value):
 root = Tk()
 root.title("PyPicker")
 root.geometry("280x250")
-iconPict = PhotoImage(file="icon.png")
-root.iconphoto(False, iconPict)
+root.iconbitmap("icono.ico")
 root.resizable(0, 0)
 
 # Configuracion de encabezado
