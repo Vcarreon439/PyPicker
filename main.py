@@ -4,26 +4,32 @@ import Conversiones as cV
 
 
 def slide(value):
+    # Valores de las escalar RGB
     r = r_scale.get()
     g = g_scale.get()
     b = b_scale.get()
+
+    # Variable para el cambio de color de el recuadro "colorLabel"
     hexcode = cV.rgb_to_hex(r, g, b)
     colorLabel.config(bg=f'{hexcode}')
+
+    # Proceso para evitar reduncia en conversion RGB a HEX
     labHex.config(text=f'hex: {hexcode}')
 
+    # Converesiones implícitas de RGB a
     labCMYK.config(text=f'{cV.rgb_to_cmyk(r, g, b)}')
     labHSV.config(text=f'{cV.rgb_to_hsv(r, g, b)}')
     labHLS.config(text=f'{cV.rgb_to_hls(r, g, b)}')
 
 
-# Configuration de la ventana principal
+# Configuración de la ventana principal
 root = Tk()
 root.title("PyPicker")
 root.geometry("280x250")
 root.iconbitmap("icono.ico")
 root.resizable(0, 0)
 
-# Configuracion de encabezado
+# Configuración de encabezado
 colorLabel = Label(root, bg="Black", width=280, height=2, bd=0, relief=FLAT)
 colorLabel.grid(row=0, column=0, sticky=NS)
 
@@ -60,14 +66,14 @@ tab2 = tkinter.ttk.Frame(tabControl)
 tab3 = tkinter.ttk.Frame(tabControl)
 tab4 = tkinter.ttk.Frame(tabControl)
 
-# Adding tabs to tabFrame
+# Se agregan tabs al TabControl
 tabControl.add(tab1, text='HEX')
 tabControl.add(tab2, text='CMYK')
 tabControl.add(tab3, text='HSV')
 tabControl.add(tab4, text='HSL')
 tabControl.pack(expand=4, fill="both")
 
-# Adding controls to each tab
+# Se agregan "controles" a cada tab del TabControl
 labHex = Label(tab1, text="")
 labHex.grid(column=0, row=0)
 labCMYK = Label(tab2, text="")
@@ -77,4 +83,5 @@ labHSV.grid(column=0, row=0)
 labHLS = Label(tab4, text="")
 labHLS.grid(column=0, row=0)
 
+# Ciclo de ejecución infinita
 root.mainloop()

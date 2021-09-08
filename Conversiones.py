@@ -3,8 +3,8 @@ def rgb_to_hex(r, g, b):
 
 
 def rgb_to_cmyk(r, g, b):
+    # Excepción en caso de RGB (0,0,0)
     if (r, g, b) == (0, 0, 0):
-        # black
         return f'(0, 0, 0, 100)'
     else:
         # rgb [0,255] -> cmy [0,1]
@@ -12,14 +12,14 @@ def rgb_to_cmyk(r, g, b):
         m = 1 - g / 255
         y = 1 - b / 255
 
-        # extract out k [0, 1]
+        # Quitamos k de la escala [0, 1]
         min_cmy = min(c, m, y)
         c = (c - min_cmy) / (1 - min_cmy)
         m = (m - min_cmy) / (1 - min_cmy)
         y = (y - min_cmy) / (1 - min_cmy)
         k = min_cmy
 
-        # rescale to the range [0,CMYK_SCALE]
+        # Damos formato a los resultados para una mejor interpretación
         return f'({format(c * 100,".2f")}, {format(m * 100,".2f")}, {format(y * 100,".2f")}, {format(k * 100,".2f")})'
 
 
