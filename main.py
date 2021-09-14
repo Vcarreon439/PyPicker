@@ -73,6 +73,7 @@ tabControl.add(tab1, text='HEX', )
 tabControl.add(tab2, text='CMYK')
 tabControl.add(tab3, text='HSV')
 tabControl.add(tab4, text='HSL')
+tabControl.add(tab5, text='Creditos')
 
 # Se agregan "controles" a cada tab del TabControl
 labHex = Label(tab1, text="")
@@ -83,6 +84,12 @@ labHSV = Label(tab3, text="")
 labHSV.grid(column=0, row=0)
 labHLS = Label(tab4, text="")
 labHLS.grid(column=0, row=0)
+
+labCreds1 = Label(tab5, text="Carreon Pulido Victor Hugo - 192310436")
+labCreds1.grid(column=0, row=0)
+labCreds2 = Label(tab5, text="Mejia Rubio Andrea Evelyn - 192310177")
+labCreds2.grid(column=0, row=1)
+
 
 # Ciclo de ejecución infinita
 root.mainloop()
