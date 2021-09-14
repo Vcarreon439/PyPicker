@@ -1,4 +1,6 @@
 def rgb_to_hex(r, g, b):
+    # Conversión rapida de RGB a HEX
+    # %x convierte a HEX y el 02 significa que si el valor es menor a 2 digitos se pondra un 0
     return "#%02x%02x%02x" % (r, g, b)
 
 
@@ -45,10 +47,7 @@ def rgb_to_hsv(r, g, b):
 
 
 def rgb_to_hls(r, g, b):
-    r /= 255
-    g /= 255
-    b /= 255
-
+    r, g, b = r / 255.0, g / 255.0, b / 255.0
     maxc = max(r, g, b)
     minc = min(r, g, b)
     # XXX Can optimize (maxc+minc) and (maxc-minc)

@@ -31,7 +31,7 @@ root.resizable(0, 0)
 
 # Configuración de encabezado
 colorLabel = Label(root, bg="Black", width=280, height=2, bd=0, relief=FLAT)
-colorLabel.grid(row=0, column=0, sticky=NS)
+colorLabel.grid(row=0, column=0, sticky=W+E)
 
 # Frame secundario para slidebars de RGB
 secondaryFrame = Frame(root, bd=2, relief=FLAT)
@@ -56,22 +56,23 @@ b_scale = Scale(secondaryFrame, from_=0, to=255, length=210, fg='Blue', orient=H
 b_scale.grid(row=2, column=1, sticky=W + E)
 
 # Frame para TabControl
-tabFrame = Frame(root)
-tabFrame.grid(row=2, column=0, sticky=W + E, padx=5)
-tabControl = tkinter.ttk.Notebook(tabFrame)
+tabFrame = Frame(root, width=280)
+tabFrame.grid(row=2, column=0, sticky=W, padx=5)
+tabControl = tkinter.ttk.Notebook(tabFrame, width=266, height=50)
+tabControl.grid(sticky=S, pady=(0,10))
 
 # Tabs
 tab1 = tkinter.ttk.Frame(tabControl)
 tab2 = tkinter.ttk.Frame(tabControl)
 tab3 = tkinter.ttk.Frame(tabControl)
 tab4 = tkinter.ttk.Frame(tabControl)
+tab5 = tkinter.ttk.Frame(tabControl)
 
 # Se agregan tabs al TabControl
-tabControl.add(tab1, text='HEX')
+tabControl.add(tab1, text='HEX', )
 tabControl.add(tab2, text='CMYK')
 tabControl.add(tab3, text='HSV')
 tabControl.add(tab4, text='HSL')
-tabControl.pack(expand=4, fill="both")
 
 # Se agregan "controles" a cada tab del TabControl
 labHex = Label(tab1, text="")
